@@ -5,10 +5,11 @@ require("config.options")
 
 
 -- Plugins
-require('plugins.mini-base16')
+require('plugins.mini-nvim')
+require('plugins.persistence')
 require('plugins.bufferline')
-require('plugins.dashboard')
 require('plugins.lualine')
-require('plugins.nerdy')
-require('plugins.nvim-highlight-colors')
 require('plugins.snacks')
+require('plugins.nerdy')
+require('plugins.boole')
+require('plugins.nvim-highlight-colors')

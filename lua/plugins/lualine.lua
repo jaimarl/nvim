@@ -4,8 +4,9 @@ theme.normal.a.bg = color.base0D
 
 require('lualine').setup {
     options = {
-        theme = theme,
-        component_separators = '',
-        section_separators = { left = '', right = '' }
+        disabled_filetypes = {
+            statusline = { 'snacks_dashboard' }
+        },
+        theme = theme
     };
 }

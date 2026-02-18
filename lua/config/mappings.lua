@@ -1,9 +1,24 @@
 -- Actions
-vim.keymap.set('n', '<C-c>', '<cmd>:q<CR>')
-vim.keymap.set('n', '<C-q>', '<cmd>:BufDel<CR>')
-vim.keymap.set('n', '<C-a>', '<cmd>%y+<CR>')
 vim.keymap.set('i', '<C-s>', '<cmd>:w<CR>')
 vim.keymap.set('n', '<C-s>', '<cmd>:w<CR>')
+
+vim.keymap.set('n', '<C-c>', '<cmd>:qa<CR>')
+vim.keymap.set('n', '<C-q>',
+    function()
+        local bufs = vim.fn.getbufinfo({ buflisted = 1 })
+        if #bufs <= 1 then
+            vim.cmd('confirm q')
+        else
+            Snacks.bufdelete()
+        end
+    end
+)
+
+
+--- Persistence
+vim.keymap.set("n", "<leader>qs", function() require("persistence").load({ last = true }) end)
+vim.keymap.set("n", "<leader>qS", function() require("persistence").select() end)
+vim.keymap.set("n", "<leader>qd", function() require("persistence").stop() end)
 
 
 -- Yazi

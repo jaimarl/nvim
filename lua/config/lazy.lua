@@ -19,19 +19,17 @@ vim.opt.rtp:prepend(lazypath)
 -- Install Plugins
 require("lazy").setup({
     spec = {
-        { "folke/snacks.nvim", priority = 1000, lazy = false },
-        
-        { 'cohama/lexima.vim' },
-        { 'brenoprata10/nvim-highlight-colors' },
         { 'nvim-mini/mini.base16' },
-        { 'numToStr/Comment.nvim' },
+        { "folke/snacks.nvim", priority = 1000, lazy = false },
+        { 'folke/persistence.nvim', event = 'BufReadPre' },
         { 'akinsho/bufferline.nvim' },
+        { 'brenoprata10/nvim-highlight-colors' },
+        { 'cohama/lexima.vim' },
+        { 'numToStr/Comment.nvim' },
+        { 'nvim-mini/mini.surround' },
+        { 'nat-418/boole.nvim' },
         { 'ojroques/nvim-bufdel' },
 
-        {
-            'nvim-telescope/telescope.nvim',
-            dependencies = { 'nvim-lua/plenary.nvim' }
-        },
         {
             'nvim-lualine/lualine.nvim',
             dependencies = { 'nvim-tree/nvim-web-devicons' }
@@ -43,10 +41,6 @@ require("lazy").setup({
         {
             "mikavilpas/yazi.nvim", event = "VeryLazy",
             dependencies = { "nvim-lua/plenary.nvim", lazy = true },
-        },
-        {
-            'nvimdev/dashboard-nvim', event = 'VimEnter',
-            dependencies = { {'nvim-tree/nvim-web-devicons'}}
         },
     },
 })
