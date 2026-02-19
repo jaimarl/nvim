@@ -1,0 +1,16 @@
+return {
+    "mikavilpas/yazi.nvim", 
+    dependencies = { "nvim-lua/plenary.nvim"},
+    event = "VeryLazy",
+    lazy = true,
+
+    keys = {
+        { '<leader>n', '<cmd>:Yazi<CR>' },
+        { '<C-up>', '<cmd>:Yazi toggle<CR>' }
+    },
+
+    opts = {
+        change_neovim_cwd_on_close = true,
+        open_for_directories = true
+    }
+}

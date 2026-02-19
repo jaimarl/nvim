@@ -1,12 +1,12 @@
-local color = require('mini.base16').config.palette
-local theme = require('lualine.themes.auto')
-theme.normal.a.bg = color.base0D
+return {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
 
-require('lualine').setup {
-    options = {
-        disabled_filetypes = {
-            statusline = { 'snacks_dashboard' }
-        },
-        theme = theme
-    };
+    opts = {
+        options = {
+            disabled_filetypes = {
+                statusline = { 'snacks_dashboard' }
+            },
+        }
+    }
 }

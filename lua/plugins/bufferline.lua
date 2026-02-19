@@ -1,14 +1,12 @@
-local color = require('mini.base16').config.palette
+return {
+    'akinsho/bufferline.nvim',
+    lazy = false,
 
-require("bufferline").setup {
-    highlights = {
-        duplicate_visible = { bg = 'none' },
-        duplicate_selected = { bg = 'none' },
-        indicator_visible = { bg = 'none' },
-        indicator_selected = { bg = 'none', fg = color.base0D },
-        buffer_visible = { bg = 'none' },
-        buffer_selected = { bg = 'none' },
-        modified_visible = { bg = 'none' },
-        modified_selected = { bg = 'none' },
-    }
+    keys = {
+        { '<Tab>', ':BufferLineCycleNext<CR>' },
+        { '<S-Tab>', ':BufferLineCyclePrev<CR>' },
+        { '<C-l>', ':BufferLineCloseOthers<CR>' }
+    },
+
+    opts = {}
 }
