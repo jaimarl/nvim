@@ -27,3 +27,9 @@ vim.opt.softtabstop = 4
 vim.opt.smartindent = true
 vim.opt.cindent = true
 vim.opt.smarttab = true
+
+
+-- Mappings
+vim.keymap.set('n', '<C-c>', '<cmd>:qa<CR>')
+vim.keymap.set('i', '<C-s>', '<cmd>:w<CR>')
+vim.keymap.set('n', '<C-s>', '<cmd>:w<CR>')
