@@ -5,7 +5,7 @@ return {
     lazy = true,
 
     keys = {
-        { '<leader>n', '<cmd>:Yazi<CR>' },
+        -- { '<leader>n', '<cmd>:Yazi<CR>' },
         { '<C-up>', '<cmd>:Yazi toggle<CR>' }
     },
 

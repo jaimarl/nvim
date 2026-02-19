@@ -4,7 +4,9 @@ return {
     lazy = false,
 
     keys = {
-        { '<leader>`', function() Snacks.picker.pick('icons') end },
+        { '<leader>]', function() Snacks.explorer() end },
+        { '<leader>`', function() Snacks.picker.icons() end },
+        { '<leader>:', function() Snacks.picker.command_history() end },
         { '<M-Tab>', function() Snacks.picker.buffers() end },
         { '<C-q>', function()
             if vim.bo.filetype == "snacks_dashboard" then return end
@@ -20,7 +22,10 @@ return {
     },
 
     opts = {
-        picker = { enabled = true },
+        picker = { 
+            enabled = true,
+            hidden = true,
+        },
         input = { enabled = true },
         notifier = { enabled = true },
         indent = { enabled = true },
@@ -59,7 +64,7 @@ return {
                 },
                 {
                     section = 'projects',
-                    icon = '󰉋 ',
+                    icon = '󰝰 ',
                     title = { 'Projects', hl = 'normal' },
                     indent = 2,
                     padding = 1
@@ -74,7 +79,6 @@ return {
                         align = "center",
                         text = {
                             { '󱐋 ', hl = 'special' },
-                            { 'Neovim loaded ', hl = 'normal' },
                             { stats.loaded .. "/" .. stats.count, hl = "special" },
                             { " plugins loaded in ", hl = "normal" },
                             { ms .. "ms", hl = "special" },
@@ -85,15 +89,15 @@ return {
             },
             preset = {
                 keys = {
-                    { icon = '󰇥 ', key = 'y', desc = { 'Yazi', hl = 'normal' }, action = ':Yazi' },
+                    -- NOTE: Replaced yazi with snacks picker. Testing
+                    -- { icon = '󰇥 ', key = 'y', desc = { 'Yazi', hl = 'normal' }, action = ':Yazi' },
                     { icon = '󰦛 ', key = 'r', desc = { 'Recent', hl = 'normal' }, action = ':lua Snacks.dashboard.pick(\'oldfiles\')' },
-                    { icon = '󰖯 ', key = 's', desc = { 'Last Session', hl = 'normal' }, action = ':lua require(\'persistence\').load({ last = true })' },
-                    { icon = '󰖲 ', key = 'S', desc = { 'Select Session', hl = 'normal' }, action = ':lua require(\'persistence\').select()' },
-                    { icon = '󰈔 ', key = 'n', desc = { 'New File', hl = 'normal' }, action = ':ene | startinsert' },
+                    { icon = '󰆓 ', key = 's', desc = { 'Session', hl = 'normal' }, action = ':lua require(\'persistence\').load({ last = true })' },
                     { icon = '󰒲 ', key = 'l', desc = { 'Lazy', hl = 'normal' }, action = ':Lazy' },
+                    { icon = '󱓓 ', key = 'p', desc = { 'Plugins', hl = 'normal' }, action = ':lua Snacks.picker.lazy()' },
                     { icon = '󰈆 ', key = 'q', desc = { 'Quit', hl = 'normal' }, action = ':qa' }
                 }
             },
         } 
-    }
+    },
 }
