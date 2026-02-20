@@ -19,7 +19,7 @@ vim.opt.rtp:prepend(lazypath)
 -- Install Plugins
 require("lazy").setup({ 
     spec = {
-        { import = 'themes' },
+        { import = 'colorschemes' },
         { import = 'plugins' }
     },
     change_detection = {
