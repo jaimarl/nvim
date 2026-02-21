@@ -1,5 +1,5 @@
 return {
-    'sainnhe/gruvbox-material',
+    "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
 }

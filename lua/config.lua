@@ -65,11 +65,11 @@ vim.keymap.set('n', '<C-l>', '<C-w>l')
 vim.keymap.set('n', '<leader><Tab>', '<C-^>')   -- Switch to last buffer
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>') -- Reset search highlighting
+-- Center text when navigating through search results
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
 
-vim.keymap.set("x", "<leader>p", [["_dP]])      -- Pasting in Visual Mode does not replace clipboard.
+vim.keymap.set("v", "p", [["_dP]])      -- Pasting in Visual Mode does not replace clipboard.
 
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")    -- Move selected lines up
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")    -- Move selected lines down
-
--- vim.opt.foldmethod = "expr"
--- vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"

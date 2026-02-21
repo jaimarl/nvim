@@ -1,4 +1,4 @@
-local ignore_schemes = { 'catppuccin' }
+local ignore_schemes = { 'catppuccin', 'tokyonight' }
 
 return {
     "folke/snacks.nvim",
@@ -27,7 +27,7 @@ return {
         { '<C-l>', function() Snacks.bufdelete.other() end }
     },
 
-    opts = {
+   opts = {
         picker = { 
             enabled = true,
             hidden = true,
@@ -62,12 +62,6 @@ return {
         scope = { enabled = true },
         bigfile = { enabled = true },
         quickfile = { enabled = true },
-
-        scroll = {
-            animate = {
-                duration = { step = 10, total = 125 }
-            }
-        },
 
         dashboard = {
             enabled = true,
