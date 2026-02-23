@@ -20,7 +20,6 @@ vim.opt.relativenumber = true -- Relative line numbers
 vim.opt.cursorline = true     -- Highlight current line
 vim.opt.so = 30               -- Center current line
 vim.opt.wrap = false          -- Do not wrap long lines 
--- vim.opt.signcolumn = "yes"    -- Always show sign column 
 vim.opt.showmode = false      -- Disable mode display 
 
 -- Split Windows
@@ -62,7 +61,7 @@ vim.keymap.set('n', '<C-j>', '<C-w>j')
 vim.keymap.set('n', '<C-k>', '<C-w>k')
 vim.keymap.set('n', '<C-l>', '<C-w>l')
 
-vim.keymap.set('n', '<leader><Tab>', '<C-^>')   -- Switch to last buffer
+vim.keymap.set('n', '<M-Tab>', '<C-^>')   -- Switch to last buffer
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>') -- Reset search highlighting
 -- Center text when navigating through search results
