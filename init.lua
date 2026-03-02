@@ -1,8 +1,11 @@
 -- Configuration 
-require("config")
-require("lazy-nvim")
+_G.Common = require('config.common')
 
--- Saving selected theme
+require("config.options")
+require("config.keymaps")
+require("config.lazy")
+
+-- Save and load colorscheme
 local theme_cache = vim.fn.stdpath("data") .. "/last_theme.lua"
 
 local function load_theme()
@@ -13,7 +16,7 @@ local function load_theme()
 
         pcall(vim.cmd.colorscheme, theme)
     else
-        vim.cmd.colorscheme "gruvbox-material" 
+        vim.cmd.colorscheme "catppuccin"
     end
 end
 

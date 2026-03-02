@@ -1,5 +1,3 @@
-local common = require('common')
-
 return {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -15,29 +13,42 @@ return {
             lualine_b = {
                 {
                     'branch',
-                    icon = common.git.branch
+                    icon = Common.icons.git.branch
                 },
                 {
                     'diff',
                     symbols = {
-                        added = common.git.added .. ' ',
-                        modified = common.git.modified .. ' ',
-                        removed = common.git.deleted .. ' '
+                        added = Common.icons.git.added .. ' ',
+                        modified = Common.icons.git.modified .. ' ',
+                        removed = Common.icons.git.deleted .. ' '
                     }
                 },
                 {
                     'diagnostics',
                     symbols = {
-                        error = common.diagnostics.error .. ' ',
-                        warn = common.diagnostics.warn .. ' ',
-                        info = common.diagnostics.info .. ' ',
-                        hint = common.diagnostics.hint .. ' '
+                        error = Common.icons.diagnostics.error .. ' ',
+                        warn = Common.icons.diagnostics.warn .. ' ',
+                        info = Common.icons.diagnostics.info .. ' ',
+                        hint = Common.icons.diagnostics.hint .. ' '
                     }
                 },
             },
-            lualine_c = {
-                'filename'
-            }
+            lualine_c = {}
+        },
+
+        tabline = {
+            lualine_b = {
+                {
+                    'buffers',
+                    symbols = { alternate_file = '󰘁 ' },
+
+                    filetype_names = {
+                        ['neo-tree'] = Common.icons.ui.explorer .. ' ' .. 'Explorer',
+                        snacks_picker_input = '󰆽 Picker'
+                    }
+                }
+            },
+            lualine_z = { 'tabs' }
         }
     }
 }

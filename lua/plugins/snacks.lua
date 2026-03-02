@@ -1,4 +1,3 @@
-local common = require('common')
 local ignore_schemes = { 'catppuccin', 'tokyonight' }
 
 return {
@@ -6,52 +5,17 @@ return {
     priority = 1000,
     lazy = false,
 
-    keys = {
-        -- Picker
-        { '<leader>`', function() Snacks.picker.icons({ layout = 'select' }) end },
-        { '<leader>:', function() Snacks.picker.command_history({ layout = 'select' }) end },
-        { '<leader>t', function() Snacks.picker.colorschemes() end },
-
-        -- Buffers
-        { '<S-Tab>', function()
-            if vim.bo.filetype == "snacks_dashboard" then return end
-
-            Snacks.picker.buffers({ layout = 'vertical' })
-        end },
-
-        { '<C-q>', function()
-            if vim.bo.filetype == "snacks_dashboard" then return end
-
-            local bufs = vim.fn.getbufinfo({ buflisted = 1 })
-
-            if #bufs <= 1 then
-                vim.cmd('confirm q')
-            else
-                Snacks.bufdelete.delete()
-            end
-        end },
-    },
-
     config = function()
-        vim.api.nvim_create_autocmd("ColorScheme", {
-            pattern = "*",
-            callback = function ()
-                vim.api.nvim_set_hl(0, "lspReferenceRead", { underline = true })
-                vim.api.nvim_set_hl(0, "lspReferenceWrite", { underline = true })
-                vim.api.nvim_set_hl(0, "lspReferenceText", { underline = true })
-            end
-        })
-
         require('snacks').setup({
             picker = {
                 enabled = true,
 
                 sources = {
+                    icons = { layout = 'select' },
+                    command_history = { layout = 'select' },
                     explorer = {
-                        hidden = true,
-                        ignored = true,
-                        auto_close = true,
-                        layout = 'vertical',
+                        layout = 'default',
+                        auto_close = true
                     },
                     colorschemes = {
                         transform = function(item)
@@ -67,11 +31,34 @@ return {
                 },
 
                 icons = {
+                    files = {
+                        dir = Common.icons.ui.folder .. ' ',
+                        dir_open = Common.icons.ui.folder_open .. ' ',
+                        file = Common.icons.ui.file .. ' '
+                    },
+                    undo = {
+                        saved   = Common.icons.ui.floppy .. ' ',
+                    },
+                    ui = {
+                        selected = Common.icons.git.staged .. ' ',
+                        unselected = Common.icons.git.unstaged .. ' '
+                    },
+                    git = {
+                      commit    = "󰜘 ",
+                      staged    = Common.icons.git.staged,
+                      added     = Common.icons.git.added,
+                      deleted   = Common.icons.git.deleted,
+                      ignored   = Common.icons.git.ignored,
+                      modified  = Common.icons.git.unstaged,
+                      renamed   = Common.icons.git.renamed,
+                      unmerged  = " ",
+                      untracked = Common.icons.git.untracked,
+                    },
                     diagnostics = {
-                        Error = common.diagnostics.error,
-                        Warn = common.diagnostics.warn,
-                        Hint = common.diagnostics.hint,
-                        info = common.diagnostics.info
+                        Error = Common.icons.diagnostics.error,
+                        Warn = Common.icons.diagnostics.warn,
+                        Hint = Common.icons.diagnostics.hint,
+                        info = Common.icons.diagnostics.info
                     }
                 }
             },
@@ -125,13 +112,13 @@ return {
                     {
                         section = 'recent_files',
                         icon = '󰅐 ',
-                        title = { 'Recent Files', hl = 'normal' },
+                        title = { 'Recent Files', hl = 'classic' },
                         indent = 2,
                         padding = 1
                     },
                     {
                         section = 'projects',
-                        icon = '󰝰 ',
+                        icon = Common.icons.ui.folder_open,
                         title = { 'Projects', hl = 'normal' },
                         indent = 2,
                         padding = 2
@@ -149,11 +136,12 @@ return {
                 },
                 preset = {
                     keys = {
-                        { icon = '󰉓 ', key = 'e', desc = { 'Explorer', hl = 'normal' }, action = function () require('neo-tree.command').execute({}) end },
+                        { icon = Common.icons.ui.explorer, key = 'e', desc = { 'Explorer', hl = 'normal' }, action = function () require('neo-tree.command').execute({}) end },
                         { icon = '󰦛 ', key = 'r', desc = { 'Recent', hl = 'normal' }, action = ':lua Snacks.dashboard.pick(\'oldfiles\')' },
-                        { icon = '󰆓 ', key = 's', desc = { 'Session', hl = 'normal' }, action = ':lua require(\'persistence\').load({ last = true })' },
+                        { icon = Common.icons.ui.floppy, key = 's', desc = { 'Session', hl = 'normal' }, action = ':lua require(\'persistence\').load({ last = true })' },
+                        { icon = ' ', key = 'c', desc = { 'Colorschemes', hl = 'normal' }, action = ':lua Snacks.picker.colorschemes()' },
                         { icon = '󰒲 ', key = 'l', desc = { 'Lazy', hl = 'normal' }, action = ':Lazy' },
-                        { icon = '󱓓 ', key = 'p', desc = { 'Plugins', hl = 'normal' }, action = ':lua Snacks.picker.lazy()' },
+                        { icon = '󱓓 ', key = 'p', desc = { 'Plugins', hl = 'normal' }, action = ':lua Snacks.picker.explorer({ cwd = "~/.config/nvim/lua/plugins" })' },
                         { icon = '󰈆 ', key = 'q', desc = { 'Quit', hl = 'normal' }, action = ':qa' }
                     }
                 },

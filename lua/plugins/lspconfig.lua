@@ -1,5 +1,3 @@
-local common = require('common')
-
 return {
     {
         "folke/lazydev.nvim",
@@ -14,12 +12,14 @@ return {
         },
     },
     {
+        -- INFO: Mason coming soon!
+    },
+    {
         'neovim/nvim-lspconfig',
         dependencies = { 'saghen/blink.cmp', 'folke/lazydev.nvim' },
 
         config = function()
             local capabilities = require('blink.cmp').get_lsp_capabilities()
-            local flake_path = vim.fn.expand('~/.nixos')
 
             -- Lua
             vim.lsp.config('lua_ls', {
@@ -40,10 +40,10 @@ return {
             vim.diagnostic.config({
                 signs = {
                     text = {
-                        [vim.diagnostic.severity.ERROR] = common.diagnostics.error,
-                        [vim.diagnostic.severity.WARN]  = common.diagnostics.warn,
-                        [vim.diagnostic.severity.HINT]  = common.diagnostics.hint,
-                        [vim.diagnostic.severity.INFO]  = common.diagnostics.info,
+                        [vim.diagnostic.severity.ERROR] = Common.icons.diagnostics.error,
+                        [vim.diagnostic.severity.WARN]  = Common.icons.diagnostics.warn,
+                        [vim.diagnostic.severity.HINT]  = Common.icons.diagnostics.hint,
+                        [vim.diagnostic.severity.INFO]  = Common.icons.diagnostics.info,
                     },
                 },
             })

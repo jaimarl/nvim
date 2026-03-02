@@ -1,5 +1,3 @@
-local common = require('common')
-
 return {
     'nvim-neo-tree/neo-tree.nvim',
     dependencies = {
@@ -7,19 +5,7 @@ return {
       'MunifTanjim/nui.nvim'
     },
 
-    keys = {
-        { '<leader>e', '<cmd>Neotree toggle<cr>' },
-    },
-
     config = function()
-        vim.api.nvim_set_hl(0, 'NeoTreeFloatTitle', { link = 'SnacksPickerTitle' })
-        vim.api.nvim_set_hl(0, 'NeoTreeFloatBorder', { link = 'SnacksPickerBorder' })
-        vim.api.nvim_set_hl(0, 'NormalFloat', { link = 'SnacksPckerBorder' })
-
-        vim.api.nvim_set_hl(0, 'NeoTreeNormal', { link = 'SnacksPicker' })
-        vim.api.nvim_set_hl(0, 'NeoTreeEndOfBuffer', { link = 'SnacksPicker' })
-        vim.api.nvim_set_hl(0, 'NeoTreeCursorLine', { link = 'SnacksPickerListCursorLine' })
-
         require('neo-tree').setup({
             popup_border_style = 'rounded',
 
@@ -39,25 +25,25 @@ return {
                     with_expanders = true,
                 },
                 icon = {
-                    folder_closed = '󰉋',
-                    folder_open = '󰝰',
-                    folder_empty = '󰝰',
-                    folder_empty_open = '󰝰',
-                    default = '󰈔',
+                    folder_closed = Common.icons.ui.folder,
+                    folder_open = Common.icons.ui.folder_open,
+                    folder_empty = Common.icons.ui.folder_open,
+                    folder_empty_open = Common.icons.ui.folder_open,
+                    default = Common.icons.ui.file,
                     use_filtered_colors = true
                 },
                 git_status = {
                     symbols = {
-                        added     = common.git.added,
-                        deleted   = common.git.deleted,
-                        modified  = common.git.changed,
-                        renamed   = common.git.renamed,
-                        untracked = common.git.untracked,
+                        added = Common.icons.git.added,
+                        deleted = Common.icons.git.deleted,
+                        modified  = Common.icons.git.changed,
+                        renamed = Common.icons.git.renamed,
 
-                        ignored   = common.git.ignored,
-                        unstaged  = common.git.unstaged,
-                        staged    = common.git.staged,
-                        conflict  = common.git.conflict
+                        staged = Common.icons.git.staged,
+                        unstaged = Common.icons.git.unstaged,
+                        untracked = Common.icons.git.untracked,
+                        ignored = Common.icons.git.ignored,
+                        conflict = Common.icons.git.conflict
                     }
                 }
             },

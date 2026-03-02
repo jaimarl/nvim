@@ -1,24 +1,22 @@
-local common = require('common')
-
 return {
     'lewis6991/gitsigns.nvim',
 
     opts = {
         signs = {
-            add          = { text = common.git.added },
-            change       = { text = common.git.modified},
-            delete       = { text = common.git.deleted },
-            topdelete    = { text = common.git.topdeleted },
-            changedelete = { text = common.git.changedeleted },
-            untracked    = { text = common.git.untracked }
+            add = { text = Common.icons.git.added },
+            change = { text = Common.icons.git.modified},
+            delete = { text = Common.icons.git.deleted },
+            topdelete = { text = Common.icons.git.topdeleted },
+            changedelete = { text = Common.icons.git.changedeleted },
+            untracked = { text = Common.icons.git.untracked }
         },
         signs_staged = {
-            add          = { text = common.git.added },
-            change       = { text = common.git.modified},
-            delete       = { text = common.git.deleted },
-            topdelete    = { text = common.git.topdeleted },
-            changedelete = { text = common.git.changedeleted },
-            untracked    = { text = common.git.untracked }
+            add = { text = Common.icons.git.added },
+            change = { text = Common.icons.git.modified},
+            delete = { text = Common.icons.git.deleted },
+            topdelete = { text = Common.icons.git.topdeleted },
+            changedelete = { text = Common.icons.git.changedeleted },
+            untracked = { text = Common.icons.git.untracked }
         },
     },
 }

@@ -32,6 +32,9 @@ return {
                 augend.constant.new({ elements = { 'and', 'or' }, preserve_case = true }),
                 augend.constant.new({ elements = { '=', '!=' }, word = false, preserve_case = true }),
 
+                -- Markdown
+                augend.constant.new({ elements = { '- [ ]', '- [x]' }, word = false }),
+
                 -- Months
                 augend.constant.new({
                     elements = { 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' },
