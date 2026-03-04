@@ -27,12 +27,20 @@ vim.keymap.set('i', '<C-s>', '<cmd>:w<CR>')
 -- Paste in visual mode without replacing the clipboard
 vim.keymap.set("v", "p", [["_dP]])
 
+--
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
+
 -- Move selected lines up/down
 vim.keymap.set("v", "<M-k>", "<cmd>m '<-2<CR>gv=gv")
 vim.keymap.set("v", "<M-j>", "<cmd>m '>+1<CR>gv=gv")
 
 
 -- Pickers --------------------------------------------------------------------
+vim.keymap.set('n', '<leader>e', function () require('neo-tree.command').execute({}) end, { desc = 'Explorer' })
+vim.keymap.set('n', '<leader>r', function () require('snacks').picker.recent() end, { desc = 'Recent files' })
+vim.keymap.set('n', '<leader>/', function () require('snacks').picker.grep() end, { desc = 'Grep' })
+
 vim.keymap.set('n', '<leader>i', function () require('snacks').picker.icons() end, { desc = 'Icons' })
 vim.keymap.set('n', '<leader>c', function () require('snacks').picker.colorschemes() end, { desc = 'Colorschemes' })
 vim.keymap.set('n', '<leader>:', function () require('snacks').picker.command_history() end, { desc = 'Command history' })
@@ -43,9 +51,6 @@ vim.keymap.set('n', '<leader>t', function () require('snacks').picker.todo_comme
 
 vim.keymap.set('n', '<leader>gb', function () require('snacks').picker.git_branches() end, { desc = 'Git Branches' })
 vim.keymap.set('n', '<leader>gs', function () require('snacks').picker.git_status() end, { desc = 'Git Status' })
-
-vim.keymap.set('n', '<leader>e', function () require('neo-tree.command').execute({}) end, { desc = 'Explorer' })
-vim.keymap.set('n', '<leader>r', function () require('snacks').picker.recent() end, { desc = 'Recent files' })
 
 
 -- Buffers --------------------------------------------------------------------

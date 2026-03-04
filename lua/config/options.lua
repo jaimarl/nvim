@@ -11,8 +11,8 @@ vim.termguicolors = true      -- Support 24-Bit colors
 vim.opt.number = true         -- Display line numbers
 vim.opt.relativenumber = true -- Relative line numbers
 vim.opt.cursorline = true     -- Highlight current line
--- vim.opt.so = 30               -- Center current line
-vim.opt.wrap = false          -- Do not wrap long lines 
+vim.opt.wrap = false          -- Do not wrap long lines
+vim.opt.signcolumn = 'yes'
 vim.opt.showmode = false      -- Disable mode display 
 vim.opt.laststatus = 3        -- Single statusline for all windows
 
